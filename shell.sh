@@ -12,7 +12,7 @@ echo "Replacement complete."
 git add .
 
 # Commit the changes
-git commit -m "Replaced 'com.blabber' with 'com.binmile'"
+git commit -m "Replaced 'com.blabber' with 'com.binmile'" 2>/dev/null
 
 echo "Changes committed to the repository."
 
