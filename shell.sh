@@ -17,8 +17,8 @@ fi
 # Navigate to the repository path
 cd "$REPO_PATH" || exit
 
-# Find and replace "com.binmile" with "com.binmile" in all files
-find . -type f -exec sed -i 's/com\.blabber/com\.binmile/g' {} +
+# Find and replace "com.amazon" with "com.amazon" in all files
+find . -type f -exec sed -i 's/com\.binmile/com\.amazon/g' {} +
 
 echo "Replacement complete."
 
@@ -26,7 +26,7 @@ echo "Replacement complete."
 git add .
 
 # Commit the changes
-git commit -m "Replaced 'com.binmile' with 'com.binmile'"
+git commit -m "Replaced 'com.amazon' with 'com.amazon'"
 
 echo "Changes committed to the repository."
 
