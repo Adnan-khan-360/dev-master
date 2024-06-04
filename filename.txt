@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-Content for branch23
-=======
-Content for branch1
->>>>>>> branch22
