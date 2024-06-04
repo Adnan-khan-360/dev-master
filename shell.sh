@@ -4,7 +4,7 @@
 echo "Running script in directory: $(pwd)"
 
 # Find and replace "com.blabber" with "com.binmile" in all files
-find . -type f -exec sed -i 's/com\.filezippo/com\.amazon/g' {} +
+find . -type f -exec sed -i 's/com\.amazon/com\.realme/g' {} +
 
 echo "Replacement complete."
 
