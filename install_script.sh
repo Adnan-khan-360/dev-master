@@ -1,30 +1,35 @@
 #!/bin/bash
 
 # Define the array of business names without the 'com.' prefix
-BUSINESS_NAMES=("amazon.com" "amazon.com" "itsbinmile.com")
-
+BUSINESS_NAMES=("binmile" "faisal" "adnan")
+BRANCH_NAMES=("business" "branch" "checkout")
 # Print the current working directory
 echo "Running script in directory: $(pwd)"
 
-# Loop through each business name and perform the replacement
+# Pull the old code
+git pull
+
+# Loop through each business name
 for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
-  echo "Replacing amazon.com with ${BUSINESS_NAME} in all files..."
-  
-  # Find and replace "amazon.com" with the current business name in all files
-  #find . -type f -exec sed -i "s/com\.blabber/${BUSINESS_NAME}/g" {} +
-  find . -type f -exec sed -i "s/itsblabber\.com/${BUSINESS_NAME}/g" {} +
+
+    # Create a new branch dynamically named based on the business name
+    git checkout -b test-${BRANCH_NAME}
+
+    echo "Replacing com.binmile with com.${BUSINESS_NAME} in all files..."
+    
+    # Find and replace "com.binmile" with the current business name in all files
+    find . -type f -exec sed -i "s/com\.blabber/com\.${BUSINESS_NAME}/g" {} +
+    
+    echo "Replacement with com.${BUSINESS_NAME} complete."
+
+    # Add all changes to the staging area
+    git add .
+
+    # Commit the changes with a dynamic message
+    git commit -m "Replaced 'com.binmile' with com.${BUSINESS_NAME}"
+
+    # Push the changes to the remote repository under the dynamically named branch
+    git push origin test-${BUSINESS_NAME}
 done
-  echo "Replacement with ${BUSINESS_NAME} complete."
-
-
-# Add changes to git
-git add .
-
-# Commit the changes
-git commit -m "Replaced 'amazon.com' with business names: ${BUSINESS_NAMES[*]}"
-
-# Push the changes to the remote repository
-git push origin main
 
 echo "Changes committed and pushed to the repository."
-
