@@ -22,3 +22,15 @@ for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
 
   echo "Replacement with ${BUSINESS_NAME} complete."
 done
+
+# Add changes to git
+git add .
+
+# Commit the changes
+git commit -m "Replaced 'com.amazon' with business names: ${BUSINESS_NAMES[*]}"
+
+# Push the changes to the remote repository
+git push origin main
+
+echo "Changes committed and pushed to the repository."
+
