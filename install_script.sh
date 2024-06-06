@@ -3,22 +3,26 @@
 # Define the array of business names without the 'com.' prefix
 BUSINESS_NAMES=("binmile" "faisal" "adnan")
 
+# Define the array of branch names for Git
+BRANCH_NAMES=("branc34" "data" "dev")
+
 # Print the current working directory
 echo "Running script in directory: $(pwd)"
 
 # Pull the old code
 git pull
 
-# Loop through each business name
-for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
+# Loop through each business name and its corresponding branch name
+for i in "${!BUSINESS_NAMES[@]}"; do
+    BUSINESS_NAME="${BUSINESS_NAMES[$i]}"
+    BRANCH_NAME="${BRANCH_NAMES[$i]}"
 
-    # Create a new branch dynamically named based on the business name
-    BRANCH_NAME="test-${BUSINESS_NAME}"
+    # Create a new branch with the specified branch name
     git checkout -b "${BRANCH_NAME}"
 
-    echo "Replacing com.blabber with com.${BUSINESS_NAME} in all files..."
+    echo "Replacing com.binmile with com.${BUSINESS_NAME} in all files..."
     
-    # Find and replace "com.blabber" with the current business name in all files
+    # Find and replace "com.binmile" with the current business name in all files
     find . -type f -exec sed -i "s/com\.blabber/com\.${BUSINESS_NAME}/g" {} +
     
     echo "Replacement with com.${BUSINESS_NAME} complete."
@@ -27,12 +31,12 @@ for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
     git add .
 
     # Commit the changes with a dynamic message
-    git commit -m "Replaced 'com.blabber' with com.${BUSINESS_NAME}"
+    git commit -m "Replaced 'com.binmile' with com.${BUSINESS_NAME}"
 
-    # Push the changes to the remote repository under the dynamically named branch
+    # Push the changes to the remote repository under the specified branch name
     git push origin "${BRANCH_NAME}"
 
-    # Switch back to the original branch
+    # Switch back to the main branch for the next iteration
     git checkout main
 done
 
