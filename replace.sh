@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the names you want to replace "amazon.com" with
-new_names=("itsblabber.com" "blabber.com" "binmile.com")
+new_names=("amazon.com" "blabber.com" "binmile.com")
 
 # Loop through each new name
 for name in "${new_names[@]}"; do

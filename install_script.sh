@@ -12,7 +12,7 @@ for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
   
   # Find and replace "amazon.com" with the current business name in all files
   #find . -type f -exec sed -i "s/com\.blabber/${BUSINESS_NAME}/g" {} +
-  find . -type f -exec sed -i "s/bincore\.com/${BUSINESS_NAME}/g" {} +
+  find . -type f -exec sed -i "s/itsblabber\.com/${BUSINESS_NAME}/g" {} +
 done
   echo "Replacement with ${BUSINESS_NAME} complete."
 
