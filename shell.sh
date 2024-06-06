@@ -4,7 +4,7 @@
 echo "Running script in directory: $(pwd)"
 
 # Find and replace "amazon.com" with "com.binmile" in all files
-find . -type f -exec sed -i 's/com\.realme/com\.amazon/g' {} +
+find . -type f -exec sed -i 's/com\.realme/com\amazon.com/g' {} +
 
 echo "Replacement complete."
 
