@@ -2,7 +2,7 @@
 
 # Define the array of business names without the 'com.' prefix
 BUSINESS_NAMES=("binmile" "faisal" "adnan")
-BRANCH_NAMES=("business" "branch" "checkout")
+
 # Print the current working directory
 echo "Running script in directory: $(pwd)"
 
@@ -13,7 +13,8 @@ git pull
 for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
 
     # Create a new branch dynamically named based on the business name
-    git checkout -b test-${BRANCH_NAME}
+    BRANCH_NAME="test-${BUSINESS_NAME}"
+    git checkout -b "${BRANCH_NAME}"
 
     echo "Replacing com.binmile with com.${BUSINESS_NAME} in all files..."
     
@@ -29,7 +30,10 @@ for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
     git commit -m "Replaced 'com.binmile' with com.${BUSINESS_NAME}"
 
     # Push the changes to the remote repository under the dynamically named branch
-    git push origin test-${BUSINESS_NAME}
+    git push origin "${BRANCH_NAME}"
+
+    # Switch back to the original branch
+    git checkout main
 done
 
 echo "Changes committed and pushed to the repository."
