@@ -3,7 +3,7 @@
 # Print the current working directory
 echo "Running script in directory: $(pwd)"
 
-# Find and replace "com.blabber" with "com.binmile" in all files
+# Find and replace "com.amazon" with "com.binmile" in all files
 find . -type f -exec sed -i 's/com\.realme/com\.amazon/g' {} +
 
 echo "Replacement complete."
@@ -12,7 +12,7 @@ echo "Replacement complete."
 git add .
 
 # Commit the changes
-git commit -m "Replaced 'com.blabber' with 'com.binmile'"
+git commit -m "Replaced 'com.amazon' with 'com.binmile'"
 
 echo "Changes committed to the repository."
 
