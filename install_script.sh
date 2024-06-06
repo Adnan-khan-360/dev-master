@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the array of business names without the 'com.' prefix
-BUSINESS_NAMES=("amazon.com" "bincore.com")
+BUSINESS_NAMES=("bincore.com.com.com" "bincore.com")
 
 # Print the current working directory
 echo "Running script in directory: $(pwd)"
@@ -11,7 +11,7 @@ for BUSINESS_NAME in "${BUSINESS_NAMES[@]}"; do
   echo "Replacing com.blabber with ${BUSINESS_NAME} in all files..."
   
   # Find and replace "com.blabber" with the current business name in all files
-  find . -type f -exec sed -i "s/\amazon.com/${BUSINESS_NAME}/g" {} +
+  find . -type f -exec sed -i "s/bincore.com.com/${BUSINESS_NAME}/g" {} +
 
   echo "Replacement with ${BUSINESS_NAME} complete."
 done
