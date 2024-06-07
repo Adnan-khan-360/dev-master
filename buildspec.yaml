@@ -1,0 +1,32 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo "Starting install phase..."
+  pre_build:
+    commands:
+      - echo "Starting pre-build phase for $BUILD_TYPE..."
+  build:
+    commands:
+      - echo "Hello World from $BUILD_TYPE"  # Command to print "Hello World" with context
+      - |
+        if [ "$BUILD_TYPE" == "build1" ]; then
+          echo "Running ls for /etc/";
+          ls /etc/;  # Command to list all files and directories in /etc/ for build1
+        elif [ "$BUILD_TYPE" == "build2" ]; then
+          echo "Running ls for /usr/";
+          ls /usr/;  # Command to list all files and directories in /usr/ for build2
+        else
+          echo "Unknown build type";
+          exit 1;
+        fi
+  post_build:
+    commands:
+      - echo "Starting post-build phase for $BUILD_TYPE..."
+artifacts:
+  files:
+    - '**/*'
+
